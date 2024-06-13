@@ -18,7 +18,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import Home from "./pages/Home"
 import About from "./pages/About"
-import Vanslist from "./pages/Vanslist";
+import Vans from "./pages/Vans";
 import "./server"
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
-        <Route path="/vans" element={<Vanslist/>} />
+        <Route path="/vans" element={<Vans/>} />
       </Routes>
     </BrowserRouter>
   )

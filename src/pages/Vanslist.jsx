@@ -1,13 +1,9 @@
 import React from "react"
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-export default function Vanslist() {
+export default function Vans() {
     return (
         <h1>Vans page goes here</h1>
-        <BrowserRouter>
-        <Routes>
-            
-        </Routes>
-        </BrowserRouter>
+        {/* <Link to="vanslist">link</Link> */}
     )
 }
