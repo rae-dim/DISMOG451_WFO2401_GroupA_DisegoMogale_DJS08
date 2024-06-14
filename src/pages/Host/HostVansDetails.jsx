@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams, Link, NavLink Outlet} from "react-router-dom"
+import { useParams, Link, NavLink, Outlet} from "react-router-dom"
 
 export default function HostVans() {
     const { id } = useParams()
@@ -13,6 +13,12 @@ export default function HostVans() {
     
     if (!currentVan) {
         return <h1>Loading...</h1>
+    }
+
+    const activeStyles = {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        color: "#161616"
     }
 
     return (
@@ -40,18 +46,18 @@ export default function HostVans() {
                     <NavLink
                         to="."
                         end
-                        style={({isActive})=> isActive? activeStyle: null}>
+                        style={({isActive})=> isActive? activeStyles: null}>
                             Details
                         </NavLink>
                         <NavLink
                         to="pricing"
                         end
-                        style={({isActive})=> isActive? activeStyle: null}>
+                        style={({isActive})=> isActive? activeStyles: null}>
                             Pricing
                         </NavLink>
                         <NavLink
                         to="photos"
-                        style={({isActive})=> isActive? activeStyle: null}>
+                        style={({isActive})=> isActive? activeStyles: null}>
                             Photos
                         </NavLink>
                 </nav>
