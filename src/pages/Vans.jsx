@@ -26,7 +26,7 @@ export default function Vans() {
             try {
                 const data = await getVans()
                 setVans(data)
-            } catch(err) {
+            } catch (err) {
                 setError(err)
             } finally {
                 setLoading(false)
@@ -91,7 +91,7 @@ export default function Vans() {
                 </button>
                 
                 {typeFilter ? (
-                    <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filter">Clear Filter</button>
+                    <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filters">Clear Filter</button>
                 ) : null} {/**coditional statement determines wether or not clear button renders (renders if filter is applied) */}
             </div>
 

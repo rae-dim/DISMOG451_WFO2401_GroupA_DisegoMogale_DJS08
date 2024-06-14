@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { BsStarFill } from "react-icons/bs"
-import { getHostVans } from "../../api"
+import { getHostVans } from "../../../api"
 
 export default function Dashboard() {
     const [vans, setVans] = React.useState([])

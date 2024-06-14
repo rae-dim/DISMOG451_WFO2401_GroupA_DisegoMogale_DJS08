@@ -1,25 +1,22 @@
-import { initializeApp } from "firebase/app"
-import {
-    getFirestore,
-    collection,
-    doc,
-    getDocs,
-    getDoc,
-    query,
-    where,
-    documentId
-} from "firebase/firestore/lite"
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, doc, getDoc, getDocs, query, where  } from "firebase/firestore/lite";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyD_k3v3HK3tKEqhlqFHPkwogW7PqEqhGhk",
-    authDomain: "vanlife-a1af5.firebaseapp.com",
-    projectId: "vanlife-a1af5",
-    storageBucket: "vanlife-a1af5.appspot.com",
-    messagingSenderId: "803007000356",
-    appId: "1:803007000356:web:446cd3a1ca406839258db1"
+  apiKey: "AIzaSyAuu6_K25B_lLaY_YojhsWREBosFm1MspA",
+  authDomain: "vanlifedim.firebaseapp.com",
+  projectId: "vanlifedim",
+  storageBucket: "vanlifedim.appspot.com",
+  messagingSenderId: "520283500140",
+  appId: "1:520283500140:web:8cf3f034cb82d35130b249"
 };
 
-const app = initializeApp(firebaseConfig)
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
 // Refactoring the fetching functions below

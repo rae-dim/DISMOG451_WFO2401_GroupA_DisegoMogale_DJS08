@@ -15,7 +15,7 @@
  */
 import React from "react";
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Vans from "./pages/Vans"
@@ -35,6 +35,7 @@ import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanPhoto from "./pages/Host/HostVanPhoto";
 import NotFound from "./components/NotFound";
 import Login from "./pages/Login"
+import AuthRequired from "./components/AuthRequired";
 
 function App() {
 
@@ -48,17 +49,20 @@ function App() {
           <Route path="vans/:id" element={<VanDetail />} /> {/* created a route that has a parameter as part of its path */}
           <Route path="login" element={<Login />} />
        
-          <Route path="host" element={<HostLayout/>}> {/**stores all shared UI */}
-            <Route index element={<Dashboard/>}/> 
-            <Route path="income" element={<Income/>}/>
-            <Route path="reviews" element={<Reviews/>}/>
-            <Route path="vans" element={<HostVans/>}/>
-            <Route path="vans/:id" element={<HostVansDetails/>}>
-              <Route index element={<HostVanInfo/>} />
-              <Route path="pricing" element={<HostVanPricing/>} />
-              <Route path="photo" element={<HostVanPhoto/>} />
+          <Route element={<AuthRequired />} >
+            <Route path="host" element={<HostLayout/>}> {/**stores all shared UI */}
+              <Route index element={<Dashboard/>}/> 
+              <Route path="income" element={<Income/>}/>
+              <Route path="reviews" element={<Reviews/>}/>
+              <Route path="vans" element={<HostVans/>}/>
+              <Route path="vans/:id" element={<HostVansDetails/>}>
+                <Route index element={<HostVanInfo/>} />
+                <Route path="pricing" element={<HostVanPricing/>} />
+                <Route path="photo" element={<HostVanPhoto/>} />
+              </Route>
             </Route>
           </Route>
+
           <Route path="*" element ={<NotFound/>} />
         </Route>
       </Routes>
