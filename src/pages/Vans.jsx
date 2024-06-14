@@ -5,23 +5,24 @@ export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const typeFilter = searchParams.get("type")
-    console.log(typeFilter)
-    const [vans, setvans] = React.useState([]) // we create a state because we want to have somewhere where data ccan survive the rerender cycle so that if the page were re-rendered the data would be stored somewhere ()
+    
+    const [vans, setVans] = React.useState([]) // we create a state because we want to have somewhere where data ccan survive the rerender cycle so that if the page were re-rendered the data would be stored somewhere ()
 
     // fetching api/vans from server.js, note the difference from normal API fetch
-    React.useEffect(function() {
+    React.useEffect(() => {
         fetch("/api/vans")
             .then(res => res.json()) //API fetch generates a response which is a javascript object
-            .then(data => setvans(data.vans) )    
+            .then(data => setVans(data.vans) )    
     }, []) //request is kicked off once when the component first mounts 
     
     const displayedVans = typeFilter
-    ? vans.filter(van => van.type === typeFilter)
-    : vans
+        ? vans.filter(van => van.type === typeFilter)
+        : vans
 
     const vanElements = displayedVans.map(van => ( //we craete the first van element we want to render
         <div key={van.id} className="van-tile">
-            <Link to={`/vans/${van.id}`}> {/* create link that sends user to details on a specific van with specific van.id */}
+            <Link to={van.id} state={{search: `?${searchParams.toString()}`, type: typeFilter }}> {/* create link that sends user to details on a specific van with specific van.id / also we use a relative pathinstead of hard coding*/}
+                
                 <img src={van.imageUrl} />
                 <div className="van-info">
                     <h3>{van.name}</h3>
@@ -76,3 +77,4 @@ export default function Vans() {
 }
 
 // instead of hardcoding the search filter we should use a function URLSearchParams is outside the scope of react-dom-router
+//History state

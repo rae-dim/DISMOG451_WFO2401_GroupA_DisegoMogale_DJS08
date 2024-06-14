@@ -44,7 +44,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
-          <Route path="vans/:id" element={<VanDetail />}/> {/* created a route that has a parameter as part of its path */}
+          <Route path="vans/:id" element={<VanDetail />} /> {/* created a route that has a parameter as part of its path */}
        
 
           <Route path="host" element={<HostLayout/>}> {/**stores all shared UI */}

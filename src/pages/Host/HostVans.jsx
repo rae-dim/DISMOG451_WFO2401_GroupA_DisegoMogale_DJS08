@@ -12,7 +12,7 @@ export default function HostVans() {
 
     const hostVansElements = vans.map(van => (
         <Link
-            to={`/host/vans/${van.id}`}
+            to={van.id} //link is relative because were alreeady in host
             key={van.id}
             className="host-van-link-wrapper">
             <div className="host-van-single" key={van.id}>
