@@ -15,7 +15,7 @@
  */
 import React from "react";
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import { BrowserRouter, Routes, Route,} from "react-router-dom";
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Vans from "./pages/Vans"
@@ -28,6 +28,8 @@ import "./server"
 import Dashboard from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
+import HostVans from "./pages/Host/HostVans";
+import HostVansDetails from "./pages/Host/HostVansDetails";
 
 
 function App() {
@@ -46,6 +48,8 @@ function App() {
             <Route index element={<Dashboard/>}/> 
             <Route path="income" element={<Income/>}/>
             <Route path="reviews" element={<Reviews/>}/>
+            <Route path="vans" element={<HostVans/>}/>
+            <Route path="vans/:id" element={<HostVansDetails/>}/>
           </Route>
         </Route>
       </Routes>
