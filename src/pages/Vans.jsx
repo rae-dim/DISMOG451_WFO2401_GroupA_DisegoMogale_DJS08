@@ -11,7 +11,7 @@ export default function Vans() {
 
     const [loading, setLoading] = React.useState(false)
     
-    const [error, setError] = React.useState(false)
+    const [error, setError] = React.useState(null)
     
     // fetching api/vans from server.js, note the difference from normal API fetch
     /* React.useEffect(() => {
@@ -27,12 +27,10 @@ export default function Vans() {
                 const data = await getVans()
                 setVans(data)
             } catch(err) {
-                console.log("There was an error!")
-                console.log(err)
+                setError(err)
+            } finally {
+                setLoading(false)
             }
-           
-            
-            setLoading(false)
         }
 
         loadVans()
@@ -93,9 +91,10 @@ export default function Vans() {
                 </button>
                 
                 {typeFilter ? (
-                    <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filter">Clear</button>
+                    <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filter">Clear Filter</button>
                 ) : null} {/**coditional statement determines wether or not clear button renders (renders if filter is applied) */}
             </div>
+
             <div className="van-list">
                 {vanElements}
             </div>
