@@ -32,16 +32,40 @@ export default function Vans() {
         </div>
     ))
 
+    function handleFilterChange(key, value) {
+        setSearchParams(prevParams => {
+            if (value === null) {
+                prevParams.delete(key)
+            } else {
+                prevParams.set(key, value)
+            }
+            return prevParams
+        })
+    }
+    
+
 
     return (
         
        <div className="van-list-container">
         <h1>Explore our van options</h1>
             <div className="van-list-filter-buttons">
-                <button onClick={() => setSearchParams({type: "simple"})} className="van-type simple">Simple</button>
-                <button onClick={() => setSearchParams({type: "luxury"})} className="van-type simple">Luxury</button>
-                <button onClick={() => setSearchParams({type: "rugged"})} className="van-type simple">Rugged</button>
-                <button onClick={() => setSearchParams({type: ""})} className="van-type simple">Clear</button>
+                <button onClick={() => handleFilterChange("type", "simple")} 
+                    className={`van-type simple ${typeFilter === "simple" ? "selected" : ""}`}> {/**consitional statement keeps styling of the button if the search filter is applied */}
+                        Simple
+                </button>
+                <button onClick={() => handleFilterChange("type", "luxury")}
+                    className={`van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`}>
+                        Luxury
+                </button>
+                <button onClick={() => handleFilterChange("type", "rugged")} 
+                    className={`van-type rugged ${typeFilter === "rugged" ? "selected" : ""}`}>
+                        Rugged
+                </button>
+                
+                {typeFilter ? (
+                    <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filter">Clear</button>
+                ) : null} {/**coditional statement determines wether or not clear button renders (renders if filter is applied) */}
             </div>
             <div className="van-list">
                 {vanElements}
@@ -51,3 +75,4 @@ export default function Vans() {
     )
 }
 
+// instead of hardcoding the search filter we should use a function URLSearchParams is outside the scope of react-dom-router
