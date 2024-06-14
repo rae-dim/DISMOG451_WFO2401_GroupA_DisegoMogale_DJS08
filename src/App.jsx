@@ -28,13 +28,6 @@ function App() {
 
   return (
     <BrowserRouter>
-        <header>
-          <Link calssName="site-logo"to="/">#VANLIFE</Link>
-          <nav>
-          <Link to="/about">About </Link>
-          <Link to="/vans">Vans</Link>
-          </nav>
-        </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -55,3 +48,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // nested routes are nested pieces of the url
 // shared UI are parts of the page that needs to stay on the page even when you move to a diffrent page within the same route
 //use nested routes when you want to kep displaying some ui on the page but also want to display more, and when you want to avoid repitition in your route definitions
+//a layout route does not need to have a path
