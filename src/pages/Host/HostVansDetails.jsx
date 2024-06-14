@@ -1,45 +1,44 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
-export default function HostVansDetails() {
-    const [vans, setVans] = React.useState([])
+export default function HostVans() {
+    const { id } = useParams()
+    const [currentVan, setCurrentVan] = React.useState(null)
 
     React.useEffect(() => {
-        fetch(`/api/vans/:${van.id}`)
+        fetch(`/api/host/vans/${id}`)
             .then(res => res.json())
-            .then(data => setVans(data.vans))
+            .then(data => setCurrentVan(data.vans))
     }, [])
-
-    const hostVansElement = vans.map(van => (
-        <Link
-            to={`/host/vans/${van.id}`}
-            key={van.id}
-            className="host-van-link-wrapper">
-            <div className="host-van-single" key={van.id}>
-                <img src={van.imageUrl} alt={`Photo of ${van.name}`} />
-                <div className="host-van-info">
-                    <h3>{van.name}</h3>
-                    <p>${van.price}/day</p>
-                </div>
-            </div>
-        </Link>
-    ))
     
+    if (!currentVan) {
+        return <h1>Loading...</h1>
+    }
+
     return (
         <section>
-            <h1 className="host-vans-title">Your listed vans</h1>
-            <div className="host-vans-list">
-                {
-                    vans.length > 0 ? (
-                        <section>
-                            {hostVansElement}
-                        </section>
+        <Link
+            to=".." /**you can use a relative link instead with ".." and relative="path" */
+            relative="path"
+            className="back-button"
+        >&larr; <span>Back to all vans</span></Link>
 
-                    ) : (
-                            <h2>Loading...</h2>
-                        )
-                }
+        <div className="host-van-detail-layout-container">
+            <div className="host-van-detail">
+                <img src={currentVan.imageUrl} />
+                <div className="host-van-detail-info-text">
+                    <i
+                        className={`van-type van-type-${currentVan.type}`}
+                    >
+                        {currentVan.type}
+                    </i>
+                    <h3>{currentVan.name}</h3>
+                    <h4>${currentVan.price}/day</h4>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
     )
 }
+
+//relative links 

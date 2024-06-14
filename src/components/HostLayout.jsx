@@ -13,23 +13,24 @@ export default function HostLayout() {
         <div>
             <nav className="host-nav">
                 <NavLink 
-                    to="/host"
+                    to="." /**if we want to link to the route we are currently in we just use "." this a relative link*/
                     end
                     style={({isActive}) => isActive ? activeStyles : null}>
                         Dashboard
                 </NavLink>
+                 {/**since these are children of the host element we can use relative links/routes, instead of absolute links */}
                 <NavLink 
-                    to="/host/income"
+                    to="income"
                     style={({isActive}) => isActive ? activeStyles : null}>
                         Income
                 </NavLink>
                 <NavLink 
-                    to="/host/vans"
+                    to="vans"
                     style={({isActive}) => isActive ? activeStyles : null}>
                         Vans
                 </NavLink>
                 <NavLink 
-                    to="/host/reviews"
+                    to="reviews"
                     style={({isActive}) => isActive ? activeStyles : null}>
                         Reviews
                 </NavLink>
