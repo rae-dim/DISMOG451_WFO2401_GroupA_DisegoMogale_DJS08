@@ -1,7 +1,11 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 
 export default function Vans() {
+    const [searchParams, setSearchParams] = useSearchParams()
+
+    const typeFilter = searchParams.get("type")
+    console.log(typeFilter)
     const [vans, setvans] = React.useState([]) // we create a state because we want to have somewhere where data ccan survive the rerender cycle so that if the page were re-rendered the data would be stored somewhere ()
 
     // fetching api/vans from server.js, note the difference from normal API fetch
@@ -11,7 +15,11 @@ export default function Vans() {
             .then(data => setvans(data.vans) )    
     }, []) //request is kicked off once when the component first mounts 
     
-    const vanElements = vans.map(van => ( //we craete the first van element we want to render
+    const displayedVans = typeFilter
+    ? vans.filter(van => van.type === typeFilter)
+    : vans
+
+    const vanElements = displayedVans.map(van => ( //we craete the first van element we want to render
         <div key={van.id} className="van-tile">
             <Link to={`/vans/${van.id}`}> {/* create link that sends user to details on a specific van with specific van.id */}
                 <img src={van.imageUrl} />
