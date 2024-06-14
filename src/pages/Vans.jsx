@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useSearchParams } from "react-router-dom"
+import {getVans} from "../../api"
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -8,13 +9,35 @@ export default function Vans() {
     
     const [vans, setVans] = React.useState([]) // we create a state because we want to have somewhere where data ccan survive the rerender cycle so that if the page were re-rendered the data would be stored somewhere ()
 
+    const [loading, setLoading] = React.useState(false)
+    
+    const [error, setError] = React.useState(false)
+    
     // fetching api/vans from server.js, note the difference from normal API fetch
-    React.useEffect(() => {
+    /* React.useEffect(() => {
         fetch("/api/vans")
             .then(res => res.json()) //API fetch generates a response which is a javascript object
             .then(data => setVans(data.vans) )    
-    }, []) //request is kicked off once when the component first mounts 
+    }, []) */ //request is kicked off once when the component first mounts 
     
+    React.useEffect(() => {
+        async function loadVans() {
+            setLoading(true)
+            try {
+                const data = await getVans()
+                setVans(data)
+            } catch(err) {
+                console.log("There was an error!")
+                console.log(err)
+            }
+           
+            
+            setLoading(false)
+        }
+
+        loadVans()
+    }, []) //refactor code by using external function to render vans, avoids the assumption of "Happy path"
+
     const displayedVans = typeFilter
         ? vans.filter(van => van.type === typeFilter)
         : vans
@@ -44,8 +67,13 @@ export default function Vans() {
         })
     }
     
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
 
-
+    if (loading) {
+        return <h1>There was an error: {error.message}</h1>
+    }
     return (
         
        <div className="van-list-container">

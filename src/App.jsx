@@ -15,7 +15,7 @@
  */
 import React from "react";
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route,} from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Vans from "./pages/Vans"
@@ -33,6 +33,7 @@ import HostVansDetails from "./pages/Host/HostVansDetails";
 import HostVanInfo from "./pages/Host/HostVanInfo";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanPhoto from "./pages/Host/HostVanPhoto";
+import NotFound from "./components/NotFound";
 
 
 function App() {
@@ -46,7 +47,6 @@ function App() {
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} /> {/* created a route that has a parameter as part of its path */}
        
-
           <Route path="host" element={<HostLayout/>}> {/**stores all shared UI */}
             <Route index element={<Dashboard/>}/> 
             <Route path="income" element={<Income/>}/>
@@ -58,6 +58,7 @@ function App() {
               <Route path="photo" element={<HostVanPhoto/>} />
             </Route>
           </Route>
+          <Route path="*" element ={<NotFound/>} />
         </Route>
       </Routes>
     </BrowserRouter>
