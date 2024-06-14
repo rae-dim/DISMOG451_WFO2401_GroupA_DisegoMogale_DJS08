@@ -34,7 +34,7 @@ import HostVanInfo from "./pages/Host/HostVanInfo";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanPhoto from "./pages/Host/HostVanPhoto";
 import NotFound from "./components/NotFound";
-
+import Login from "./pages/Login"
 
 function App() {
 
@@ -46,6 +46,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} /> {/* created a route that has a parameter as part of its path */}
+          <Route path="login" element={<Login />} />
        
           <Route path="host" element={<HostLayout/>}> {/**stores all shared UI */}
             <Route index element={<Dashboard/>}/> 
