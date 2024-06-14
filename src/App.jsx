@@ -39,8 +39,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vans" element={<Vans />} />
-        {/* creacting routre params */}
-        <Route path="/vans/id" element={<VanDetail />}/>
+        <Route path="/vans:id" element={<VanDetail />}/> {/* created a route that has a parameter as part of its path */}
       </Routes>
     </BrowserRouter>
   )

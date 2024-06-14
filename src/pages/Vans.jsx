@@ -9,7 +9,7 @@ export default function Vans() {
         fetch("/api/vans")
         .then(res => res.json()) //API fetch generates a response which is a javascript object
         .then(data => setvans(data.vans) )    
-    }, []) //requeat is kicked off once when the component first mounts 
+    }, []) //request is kicked off once when the component first mounts 
     
     const vanElements = vans.map(van => ( //we craete the first van element we want to render
         
