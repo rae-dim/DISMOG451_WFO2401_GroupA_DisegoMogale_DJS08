@@ -2,10 +2,10 @@ import React from "react"
 import { useParams } from "react-router-dom"
 
 
-// Useparams() allows us to grab any of the parameter sthat we have in our url
+// useParams() allows us to grab any of the parameter sthat we have in our url
 export default function VanDetail() {
     const params = useParams() //gets the parameter details from the url
-    const [van, setVan] = React.useState(null) //we intialize the state
+    const [van, setVan] = React.useState(null) //we intialize the state as null
     console.log(params)
 
     React.useEffect(() => {

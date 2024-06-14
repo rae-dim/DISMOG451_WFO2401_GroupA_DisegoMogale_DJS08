@@ -50,3 +50,8 @@ function App() {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <App />
 );
+
+//we can use non self closing route tags to make nested routes
+// nested routes are nested pieces of the url
+// shared UI are parts of the page that needs to stay on the page even when you move to a diffrent page within the same route
+//use nested routes when you want to kep displaying some ui on the page but also want to display more, and when you want to avoid repitition in your route definitions
